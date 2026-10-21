@@ -1,0 +1,17 @@
+<view class="container">
+ <view wx:if="{{error}}" class="error-box">{{error}}<view class="link" bindtap="refresh">重新加载</view></view>
+ <block wx:if="{{order}}">
+  <view class="card"><view class="row"><text class="status">{{order.statusLabel}}</text><text class="fee">¥ {{order.fee}}</text></view><text class="card-title">{{order.title}}</text><text class="body">{{order.description || '暂无额外说明'}}</text><view class="divider"></view><view class="route"><view>取 · {{order.pickupArea}}</view><view>送 · {{order.deliveryArea}}</view></view><text class="hint">发单人：{{order.ownerName}}<text wx:if="{{order.runnerName}}"> · 跑腿员：{{order.runnerName}}</text></text><text class="hint">接单截止：{{order.dueTime}}</text><text class="hint">发布时间：{{order.time}}</text></view>
+  <view wx:if="{{order.isOwner || order.isRunner}}" class="card"><text class="section-title" style="margin-top:0">交接信息</text><text class="label">取件</text><text class="body" selectable>{{order.pickupAddress}}</text><view class="divider"></view><text class="label">送达</text><text class="body" selectable>{{order.deliveryAddress}}</text><view class="actions"><button class="secondary small" data-phone="{{order.contactPhone}}" bindtap="phone">联系发单人</button><button wx:if="{{order.runnerPhone}}" class="secondary small" data-phone="{{order.runnerPhone}}" bindtap="phone">联系跑腿员</button></view><text class="hint">联系方式仅限履行本订单使用。</text></view>
+  <view wx:else class="banner"><text class="subtitle">详细交接地址及联系电话将在成功接单后显示。</text></view>
+  <view class="note">跑腿费线下结算。接单后如需修改或取消，请双方协商并联系管理员处理。</view>
+  <view class="actions">
+   <button wx:if="{{order.status === 'waiting' && !order.isOwner && runnerStatus === 'approved'}}" class="primary" disabled="{{busy}}" loading="{{busy}}" data-transition="accept" bindtap="transition">接取订单</button>
+   <button wx:if="{{order.status === 'waiting' && !order.isOwner && runnerStatus !== 'approved'}}" class="primary" bindtap="apply">申请跑腿员后接单</button>
+   <button wx:if="{{order.status === 'waiting' && order.isOwner}}" class="danger" disabled="{{busy}}" data-transition="cancel" bindtap="transition">取消订单</button>
+   <button wx:if="{{order.status === 'accepted' && order.isRunner}}" class="primary" disabled="{{busy}}" loading="{{busy}}" data-transition="deliver" bindtap="transition">确认已送达</button>
+   <button wx:if="{{order.status === 'delivered' && order.isOwner}}" class="primary" disabled="{{busy}}" loading="{{busy}}" data-transition="complete" bindtap="transition">确认订单完成</button>
+  </view>
+  <view wx:if="{{order.isOwner || order.isRunner}}" class="link" bindtap="report" style="text-align:center;margin-top:28rpx">反馈此订单</view>
+ </block>
+</view>

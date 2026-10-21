@@ -1,0 +1,17 @@
+<view class="container">
+ <view wx:if="{{error}}" class="error-box">{{error}}<view class="link" bindtap="refresh">重新加载</view></view>
+ <block wx:if="{{post}}">
+  <view class="card">
+   <view class="row"><view class="row-start"><view class="avatar">{{post.initial}}</view><view><view class="author">{{post.authorName}}</view><view class="meta">{{post.time}}</view></view></view><text class="tag">{{post.topic}}</text></view>
+   <text class="card-title">{{post.title}}</text><text class="body" selectable>{{post.content}}</text>
+   <view class="actions"><button class="{{post.liked ? 'primary' : 'secondary'}} small" data-kind="like" bindtap="react" disabled="{{reacting}}">{{post.liked ? '已点赞' : '点赞'}} · {{post.likeCount}}</button><button class="{{post.favorited ? 'primary' : 'secondary'}} small" data-kind="favorite" bindtap="react" disabled="{{reacting}}">{{post.favorited ? '已收藏' : '收藏'}}</button></view>
+   <view class="row"><text class="link" data-type="post" data-id="{{post.id}}" bindtap="report">举报内容</text><text wx:if="{{post.isMine}}" class="link" bindtap="remove">删除动态</text></view>
+  </view>
+  <text class="section-title">同学们的讨论 · {{post.commentCount}}</text>
+  <view class="card"><textarea style="min-height:140rpx" maxlength="500" placeholder="友善地说两句…" value="{{content}}" bindinput="input"/><view class="actions"><button class="primary small" loading="{{busy}}" disabled="{{busy || !content}}" bindtap="comment">发表评论</button></view></view>
+  <view wx:for="{{comments}}" wx:key="id" class="card"><view class="row"><text class="author">{{item.authorName}}</text><text class="meta">{{item.time}}</text></view><text class="body" style="margin-top:16rpx">{{item.content}}</text><view class="row"><text class="link" data-type="comment" data-id="{{item.id}}" bindtap="report">举报</text><text wx:if="{{item.isMine}}" class="link" data-id="{{item.id}}" bindtap="removeComment">删除</text></view></view>
+  <view wx:if="{{!comments.length && !loading}}" class="empty">还没有评论，来开启讨论吧</view>
+  <button wx:if="{{hasMore}}" class="secondary" loading="{{loading}}" bindtap="more">更多评论</button>
+ </block>
+ <view wx:if="{{loading}}" class="empty">加载中…</view>
+</view>

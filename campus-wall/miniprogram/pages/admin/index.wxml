@@ -1,0 +1,12 @@
+<view class="container">
+ <view class="hero"><text class="eyebrow">CAMPUS MANAGEMENT</text><text class="title">维护校园秩序</text><text class="subtitle">仔细核验每一份申请，认真处理每一次反馈。</text></view>
+ <view wx:if="{{error}}" class="error-box">{{error}}</view>
+ <block wx:if="{{allowed}}">
+  <view class="chips"><view class="chip {{scope === 'runners' ? 'active' : ''}}" data-scope="runners" bindtap="select">跑腿员申请</view><view class="chip {{scope === 'reports' ? 'active' : ''}}" data-scope="reports" bindtap="select">内容举报</view></view>
+  <view wx:for="{{items}}" wx:key="id" class="card">
+   <block wx:if="{{scope === 'runners'}}"><text class="card-title" style="margin-top:0">{{item.realName}} · {{item.nickname}}</text><text class="body">学号：{{item.studentNo}}</text><text class="body">电话：{{item.phone}}</text><view class="actions"><button class="secondary small" disabled="{{busy}}" data-id="{{item.id}}" data-decision="rejected" bindtap="review">不通过</button><button class="primary small" disabled="{{busy}}" data-id="{{item.id}}" data-decision="approved" bindtap="review">通过审核</button></view></block>
+   <block wx:else><text class="tag">{{item.targetType}}</text><text class="card-title">{{item.reason}}</text><text class="body">{{item.preview || '原内容已不可用'}}</text><text class="hint">对象标识：{{item.targetId}}</text><view class="actions"><button class="secondary small" disabled="{{busy}}" data-id="{{item._id}}" data-decision="dismiss" bindtap="resolve">核查后结案</button><button wx:if="{{item.targetType !== 'order'}}" class="danger small" disabled="{{busy}}" data-id="{{item._id}}" data-decision="hide" bindtap="resolve">下架内容</button></view></block>
+  </view>
+  <view wx:if="{{!items.length && !loading}}" class="empty">暂时没有待处理事项</view><view wx:if="{{loading}}" class="empty">加载中…</view><button wx:if="{{hasMore}}" class="secondary" bindtap="more">加载更多</button>
+ </block>
+</view>

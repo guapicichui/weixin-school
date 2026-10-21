@@ -1,0 +1,17 @@
+<view class="container">
+ <view class="hero"><text class="eyebrow">A LITTLE HELP</text><text class="title">发布你的跑腿需求</text><text class="subtitle">填写清楚，让顺路的同学更好地帮到你。</text></view>
+ <view class="note">本版本不提供在线支付。跑腿费由双方自行确认并线下结算。</view>
+ <view class="card">
+  <view class="field"><text class="label">需求标题</text><input placeholder="例如：帮取一份东门快递" maxlength="60" value="{{title}}" data-field="title" bindinput="input"/></view>
+  <view class="field"><text class="label">需求说明</text><textarea placeholder="物品大小、注意事项等；请勿填写取件码、手机号等隐私信息" maxlength="1000" value="{{description}}" data-field="description" bindinput="input"/></view>
+  <view class="field"><text class="label">取件区域（公开显示）</text><input placeholder="例如：东门菜鸟驿站" maxlength="30" value="{{pickupArea}}" data-field="pickupArea" bindinput="input"/></view>
+  <view class="field"><text class="label">送达区域（公开显示）</text><input placeholder="例如：南区宿舍" maxlength="30" value="{{deliveryArea}}" data-field="deliveryArea" bindinput="input"/></view>
+  <view class="field"><text class="label">详细取件地址（接单后可见）</text><input placeholder="详细位置、取件说明" maxlength="120" value="{{pickupAddress}}" data-field="pickupAddress" bindinput="input"/></view>
+  <view class="field"><text class="label">详细送达地址（接单后可见）</text><input placeholder="楼栋、房间或约定交接点" maxlength="120" value="{{deliveryAddress}}" data-field="deliveryAddress" bindinput="input"/></view>
+  <view class="field"><text class="label">联系电话（接单后可见）</text><input type="number" maxlength="11" placeholder="填写你的手机号" value="{{phone}}" data-field="phone" bindinput="input"/></view>
+  <view class="field"><text class="label">跑腿费（元）</text><input type="digit" placeholder="1–1000 元" value="{{fee}}" data-field="fee" bindinput="input"/></view>
+  <view class="field"><text class="label">接单截止时间</text><picker range="{{deadlineLabels}}" value="{{deadlineIndex}}" bindchange="deadline"><view class="picker">{{deadlineLabels[deadlineIndex]}} ›</view></picker></view>
+ </view>
+ <text class="hint">发布即表示你同意将详细地址及联系电话提供给接单跑腿员，用于履行本次订单。</text>
+ <button class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="submit">发布跑腿需求</button>
+</view>

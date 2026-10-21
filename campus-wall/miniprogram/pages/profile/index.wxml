@@ -1,0 +1,15 @@
+<view class="container">
+ <view class="hero"><text class="eyebrow">MY CAMPUS LIFE</text><text class="title">你好，同学</text><text class="subtitle">把日常的连接，留在这里。</text></view>
+ <view wx:if="{{error}}" class="error-box">{{error}}<view class="link" bindtap="refresh">点击重试</view></view>
+ <block wx:if="{{user}}">
+  <view class="card" data-url="/pages/profile-edit/index" bindtap="navigate"><view class="row"><view class="row-start"><view class="avatar" style="width:100rpx;height:100rpx;font-size:42rpx">{{user.initial}}</view><view><view style="font-size:36rpx;font-weight:600">{{user.nickname}}</view><view class="meta">{{school}}</view></view></view><text class="link">编辑 ›</text></view><text class="body" style="margin-top:24rpx">{{user.bio || '还没有填写个人介绍'}}</text></view>
+  <view class="banner" data-url="/pages/runner-apply/index" bindtap="navigate"><view class="row"><view><view class="banner-title">校园跑腿员</view><text class="subtitle">{{runnerLabel}}</text></view><text class="link">查看 ›</text></view></view>
+  <view class="card">
+   <view class="menu-item" data-url="/pages/activity/index?scope=mine" bindtap="navigate"><text>我的动态</text><text class="meta">›</text></view>
+   <view class="menu-item" data-url="/pages/activity/index?scope=favorites" bindtap="navigate"><text>我的收藏</text><text class="meta">›</text></view>
+   <view wx:if="{{isAdmin}}" class="menu-item" data-url="/pages/admin/index" bindtap="navigate"><text>校园管理</text><text class="meta">跑腿审核 / 内容举报 ›</text></view>
+   <view class="menu-item" bindtap="identity"><text>复制我的账户标识</text><text class="meta">管理员配置使用 ›</text></view>
+  </view>
+  <text class="hint" style="text-align:center">校园微墙 · 和身边的人，发生一点连接</text>
+ </block>
+</view>

@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/feed/index",
+    "pages/errands/index",
+    "pages/notifications/index",
+    "pages/profile/index",
+    "pages/post-detail/index",
+    "pages/post-compose/index",
+    "pages/errand-detail/index",
+    "pages/errand-compose/index",
+    "pages/profile-edit/index",
+    "pages/runner-apply/index",
+    "pages/admin/index",
+    "pages/activity/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "校园微墙",
+    "navigationBarBackgroundColor": "#f6f8f5",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f8f5",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#87928b",
+    "selectedColor": "#176b4c",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/feed/index",
+        "text": "微墙"
+      },
+      {
+        "pagePath": "pages/errands/index",
+        "text": "跑腿"
+      },
+      {
+        "pagePath": "pages/notifications/index",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

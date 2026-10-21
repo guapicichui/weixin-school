@@ -1,0 +1,5 @@
+<view class="container">
+ <view class="hero"><text class="eyebrow">A LITTLE ABOUT YOU</text><text class="title">让同学认识你</text><text class="subtitle">使用友善、容易辨认的昵称。</text></view>
+ <view class="card"><view class="field"><text class="label">昵称</text><input maxlength="20" value="{{nickname}}" data-field="nickname" bindinput="input" placeholder="2–20 个字符"/></view><view class="field"><text class="label">个人介绍</text><textarea maxlength="160" value="{{bio}}" data-field="bio" bindinput="input" placeholder="兴趣、专业，或是一句喜欢的话"/><text class="hint">{{bio.length}} / 160</text></view></view>
+ <button class="primary" loading="{{busy}}" disabled="{{busy || !ready}}" bindtap="save">保存资料</button>
+</view>

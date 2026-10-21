@@ -1,0 +1,16 @@
+<view class="container">
+ <view class="hero"><text class="eyebrow">HELP EACH OTHER</text><text class="title">顺路，帮个小忙</text><text class="subtitle">让校园里的每一次托付，都有回应。</text></view>
+ <view class="banner"><view class="row"><view><view class="banner-title">{{runnerStatus === 'approved' ? '你已成为校园跑腿员' : '想成为校园跑腿员？'}}</view><text class="subtitle">{{runnerStatus === 'approved' ? '挑选顺路的需求，帮助身边的同学。' : '提交申请，审核通过后即可接单。'}}</text></view><text wx:if="{{runnerStatus !== 'approved'}}" class="link" bindtap="apply">去申请 ›</text></view></view>
+ <view class="chips"><view class="chip {{scope === 'market' ? 'active' : ''}}" data-scope="market" bindtap="scope">接单大厅</view><view class="chip {{scope === 'mine' ? 'active' : ''}}" data-scope="mine" bindtap="scope">我发布的</view><view class="chip {{scope === 'accepted' ? 'active' : ''}}" data-scope="accepted" bindtap="scope">我接取的</view></view>
+ <view wx:if="{{error}}" class="error-box">{{error}}<view class="link" bindtap="refresh">点击重试</view></view>
+ <view wx:for="{{items}}" wx:key="id" class="card" data-id="{{item.id}}" bindtap="open">
+  <view class="row"><text class="status">{{item.statusLabel}}</text><text class="fee">¥ {{item.fee}}</text></view>
+  <text class="card-title">{{item.title}}</text>
+  <view class="route"><view>取 · {{item.pickupArea}}</view><view>送 · {{item.deliveryArea}}</view></view>
+  <view class="footer"><text>{{item.ownerName}} · {{item.time}}</text><text>查看需求 ›</text></view>
+ </view>
+ <view wx:if="{{!items.length && !loading && !error}}" class="empty"><text class="empty-title">暂时没有订单</text>{{scope === 'market' ? '稍后再来看看，或者发布一个需求' : '你的订单会显示在这里'}}</view>
+ <view wx:if="{{loading}}" class="empty">加载中…</view>
+ <text class="hint">跑腿费由双方线下结算，请确认需求后再接单。</text>
+ <button class="primary fab" bindtap="create">＋ 发布跑腿</button>
+</view>

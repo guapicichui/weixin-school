@@ -1,0 +1,256 @@
+{
+  "description": "供控制台手工创建复合索引参考，不是自动导入配置。范围查询与排序索引以控制台实际提示为准。",
+  "indexes": [
+    {
+      "collection": "posts",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "status",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    },
+    {
+      "collection": "posts",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "status",
+          "order": "asc"
+        },
+        {
+          "field": "topic",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    },
+    {
+      "collection": "posts",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "status",
+          "order": "asc"
+        },
+        {
+          "field": "authorId",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    },
+    {
+      "collection": "favorites",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "userId",
+          "order": "asc"
+        },
+        {
+          "field": "active",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    },
+    {
+      "collection": "comments",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "postId",
+          "order": "asc"
+        },
+        {
+          "field": "status",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "asc"
+        },
+        {
+          "field": "_id",
+          "order": "asc"
+        }
+      ]
+    },
+    {
+      "collection": "orders",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "status",
+          "order": "asc"
+        },
+        {
+          "field": "dueAt",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    },
+    {
+      "collection": "orders",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "ownerId",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    },
+    {
+      "collection": "orders",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "runnerId",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    },
+    {
+      "collection": "notifications",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "recipientId",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    },
+    {
+      "collection": "runnerApplications",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "status",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    },
+    {
+      "collection": "reports",
+      "fields": [
+        {
+          "field": "schoolId",
+          "order": "asc"
+        },
+        {
+          "field": "status",
+          "order": "asc"
+        },
+        {
+          "field": "createdAt",
+          "order": "desc"
+        },
+        {
+          "field": "_id",
+          "order": "desc"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<view class="container">
+ <view class="hero"><text class="eyebrow">BECOME A CAMPUS RUNNER</text><text class="title">顺路，也是一份帮助</text><text class="subtitle">完成资料审核后，就能接取校园跑腿订单。</text></view>
+ <view wx:if="{{status === 'approved'}}" class="banner"><view class="banner-title">你已通过跑腿员审核</view><text class="subtitle">前往跑腿大厅，挑选合适的订单吧。</text></view>
+ <view wx:elif="{{status === 'pending'}}" class="banner"><view class="banner-title">申请正在审核中</view><text class="subtitle">审核结果将通过站内消息通知，请耐心等待。</text></view>
+ <block wx:else>
+  <view wx:if="{{status === 'rejected'}}" class="error-box">审核说明：{{reason}}<view>调整资料后可以重新申请。</view></view>
+  <view class="card">
+   <view class="field"><text class="label">真实姓名</text><input maxlength="30" value="{{realName}}" data-field="realName" bindinput="input" placeholder="仅供管理员核验"/></view>
+   <view class="field"><text class="label">学号</text><input maxlength="30" value="{{studentNo}}" data-field="studentNo" bindinput="input" placeholder="填写本人学号"/></view>
+   <view class="field"><text class="label">联系电话</text><input type="number" maxlength="11" value="{{phone}}" data-field="phone" bindinput="input" placeholder="用于接单后联系"/></view>
+  </view>
+  <view class="note">姓名与学号仅供管理员审核。接单后，你的联系电话会向该订单发单人显示。审核属于人工资料核验，不等同于学校官方身份认证。</view>
+  <checkbox-group bindchange="agree"><label class="row-start" style="align-items:flex-start;margin:28rpx 0"><checkbox value="agree" checked="{{agreed}}" color="#1e6b4b"/><text class="hint" style="margin:0">我同意以上资料用途，承诺填写真实信息，并按约定完成已接取的订单。</text></label></checkbox-group>
+  <button class="primary" loading="{{busy}}" disabled="{{busy || !agreed || !ready}}" bindtap="submit">提交跑腿员申请</button>
+ </block>
+</view>

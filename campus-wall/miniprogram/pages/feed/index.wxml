@@ -1,0 +1,15 @@
+<view class="container">
+ <view class="hero"><text class="eyebrow">CAMPUS / EVERYDAY</text><text class="title">校园里的新鲜事</text><text class="subtitle">{{school || '校园微墙'}} · 让每一个声音被听见</text></view>
+ <view class="banner"><view class="banner-title">今天，也和同学们聊聊吧</view><text class="subtitle">分享日常、寻找队友，交换校园里的小确幸。</text></view>
+ <scroll-view scroll-x class="chips"><view class="chip {{topic === '' ? 'active' : ''}}" data-topic="" bindtap="selectTopic">全部</view><view wx:for="{{topics}}" wx:key="*this" class="chip {{topic === item ? 'active' : ''}}" data-topic="{{item}}" bindtap="selectTopic">{{item}}</view></scroll-view>
+ <view wx:if="{{error}}" class="error-box">{{error}}<view class="link" bindtap="refresh">点击重试</view></view>
+ <view wx:for="{{items}}" wx:key="id" class="card" data-id="{{item.id}}" bindtap="open">
+  <view class="row"><view class="row-start"><view class="avatar">{{item.initial}}</view><view><view class="author">{{item.authorName}}</view><view class="meta">{{item.time}}</view></view></view><text class="tag">{{item.topic}}</text></view>
+  <text class="card-title">{{item.title}}</text><text class="body clamp">{{item.content}}</text>
+  <view class="footer"><text>♡ {{item.likeCount}} 赞 · {{item.commentCount}} 条评论</text><text>查看讨论 ›</text></view>
+ </view>
+ <view wx:if="{{!items.length && !loading && !error}}" class="empty"><text class="empty-title">这里还很安静</text>来发布校园里的第一条动态吧</view>
+ <view wx:if="{{loading}}" class="empty">加载中…</view>
+ <view wx:if="{{items.length && !hasMore}}" class="hint" style="text-align:center">已经看到全部动态</view>
+ <button class="primary fab" bindtap="compose">＋ 发布动态</button>
+</view>

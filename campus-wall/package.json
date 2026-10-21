@@ -1,0 +1,13 @@
+{
+  "name": "campus-wall",
+  "version": "1.0.0",
+  "private": true,
+  "description": "微信原生校园微墙与云函数后端",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node scripts/check-project.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

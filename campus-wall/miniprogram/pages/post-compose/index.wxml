@@ -1,0 +1,10 @@
+<view class="container">
+ <view class="hero"><text class="eyebrow">SHARE YOUR MOMENT</text><text class="title">说说校园新鲜事</text><text class="subtitle">友善交流，让分享成为连接。</text></view>
+ <view class="card">
+  <view class="field"><text class="label">选择话题</text><picker range="{{topics}}" bindchange="chooseTopic"><view class="picker">{{topic || '请选择话题'}} ›</view></picker></view>
+  <view class="field"><text class="label">标题</text><input placeholder="给这次分享起个标题" maxlength="60" value="{{title}}" data-field="title" bindinput="input"/></view>
+  <view class="field"><text class="label">正文</text><textarea placeholder="分享你的见闻、问题或者灵感…" maxlength="2000" value="{{content}}" data-field="content" bindinput="input"/><text class="hint">{{content.length}} / 2000</text></view>
+ </view>
+ <text class="hint">请尊重他人隐私，不发布广告、攻击性或违法违规内容。</text>
+ <button class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="submit">发布到微墙</button>
+</view>

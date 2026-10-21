@@ -1,0 +1,6 @@
+<view class="container">
+ <view class="hero"><text class="eyebrow">MY COLLECTION</text><text class="title">{{scope === 'favorites' ? '值得留下的分享' : '我的校园足迹'}}</text><text class="subtitle">{{scope === 'favorites' ? '收藏的动态，会留在这里。' : '你发布过的校园日常。'}}</text></view>
+ <view wx:if="{{error}}" class="error-box">{{error}}<view class="link" bindtap="refresh">点击重试</view></view>
+ <view wx:for="{{items}}" wx:key="id" class="card" data-id="{{item.id}}" bindtap="open"><view class="row"><text class="tag">{{item.topic}}</text><text class="meta">{{item.time}}</text></view><text class="card-title">{{item.title}}</text><text class="body clamp">{{item.content}}</text><view class="footer"><text>♡ {{item.likeCount}} · {{item.commentCount}} 条评论</text><text>查看 ›</text></view></view>
+ <view wx:if="{{!items.length && !loading && !error}}" class="empty">暂时没有动态</view><view wx:if="{{loading}}" class="empty">加载中…</view>
+</view>
